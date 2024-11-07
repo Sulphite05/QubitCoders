@@ -1,30 +1,31 @@
 import sqlite3
 import requests
 import csv
+from fetch_data import save_rankings
 
 conn = sqlite3.connect("students.db")
 cur = conn.cursor()
 
 cur.execute('''CREATE TABLE IF NOT EXISTS STUDENT_INFO
                 (username TEXT PRIMARY KEY,
-                full_name TEXT,               
+                full_name TEXT,
                 batch TEXT)''')
 
 cur.execute('''CREATE TABLE IF NOT EXISTS PROBLEMS_SOLVED
-                (username TEXT PRIMARY KEY, 
-                problems_solved INTEGER, 
-                easy INTEGER, 
-                medium INTEGER, 
+                (username TEXT PRIMARY KEY,
+                problems_solved INTEGER,
+                easy INTEGER,
+                medium INTEGER,
                 hard INTEGER)''')
 
 cur.execute('''CREATE TABLE IF NOT EXISTS CONTEST_INFO
-                (username TEXT PRIMARY KEY, 
-                contest_count INTEGER, 
+                (username TEXT PRIMARY KEY,
+                contest_count INTEGER,
                 contest_rating FLOAT)''')
 
 
-## Uncomment to insert/update new user data in STUDENT_INFO Table
-# with open('data.csv', 'r') as file:
+# # Uncomment to insert/update new user data in STUDENT_INFO Table
+# with open('raw_data.csv', 'r') as file:
 #     csv_reader = csv.reader(file)
 #     next(csv_reader)
 #
@@ -33,7 +34,7 @@ cur.execute('''CREATE TABLE IF NOT EXISTS CONTEST_INFO
 # conn.commit()
 
 
-## Uncomment to insert/update new contest/submission data in the CONTEST_INFO and PROBLEMS_SOLVED table
+# # Uncomment to insert/update new contest/submission data in the CONTEST_INFO and PROBLEMS_SOLVED table
 # cur.execute('SELECT username FROM STUDENT_INFO')
 # rows = cur.fetchall()
 #
@@ -64,9 +65,15 @@ cur.execute('''CREATE TABLE IF NOT EXISTS CONTEST_INFO
 #                     'VALUES (?, ?, ?, ?, ?)', (username, 0, 0, 0, 0))
 # conn.commit()
 
-cur.execute('SELECT * FROM student_info')
-rows1 = cur.fetchall()
-cur.execute('SELECT * FROM problems_solved')
-rows2 = cur.fetchall()
-print(rows1, rows2)
-conn.close()
+# # Uncomment to test
+# cur.execute('SELECT * FROM student_info')
+# rows1 = cur.fetchall()
+# cur.execute('SELECT * FROM problems_solved')
+# rows2 = cur.fetchall()
+# print(rows1, rows2)
+# conn.close()
+
+# # Uncomment to save new data to ranking_table.csv
+# save_rankings()
+
+
