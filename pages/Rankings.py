@@ -6,7 +6,8 @@ st.set_page_config(
     page_icon="💻"
 )
 
-st.title("LeetCode Rankings 💻")
+st.title("CIS LeetCode Rankings 💻")
+st.divider()
 
 df = fetch_table()
-st.dataframe(df, width=1400, height=600)
+st.dataframe(df)

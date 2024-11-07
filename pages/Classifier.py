@@ -8,6 +8,7 @@ st.set_page_config(
 
 st.title("AI Profile Classifier 🧬")
 st.text("This AI profile classifier will help you evaluate your profile strength.\n")
+st.divider()
 
 
 with st.form("my_form"):
@@ -18,7 +19,7 @@ with st.form("my_form"):
     submitted = st.form_submit_button("Submit")
     if submitted:
         score, expertise = get_user_expertise(username)
-        st.text(f'Your profile score is {float(score)} and expertise is {expertise}!')
+        st.text(f'Your profile score is {float(score)}/10 and expertise is {expertise}!')
 
 
 
