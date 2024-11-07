@@ -1,6 +1,7 @@
 import sqlite3
 import pandas as pd
 import os
+from streamlit import cache_data
 
 
 def get_db_connection():
@@ -34,6 +35,7 @@ def save_rankings():
     df.to_csv(csv_path, index=False)
 
 
+@cache_data
 def fetch_table():
     base_path = os.path.abspath(os.path.dirname(__file__))
     csv_path = os.path.join(base_path, "student_rankings.csv")

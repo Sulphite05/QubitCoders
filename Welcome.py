@@ -6,7 +6,7 @@ st.set_page_config(
     page_icon="👋"
 )
 
-col1, col2 = st.columns([0.8, 5])  # Adjust the width ratio as needed
+col1, col2 = st.columns([0.8, 5])
 
 with col1: st.image('images/logo.png', width=100)
 with col2: st.title("Welcome to QubitCoders App")
@@ -14,11 +14,15 @@ st.divider()
 
 st.subheader("Who We Are 💡")
 st.markdown("""
-The QubitCoders community exclusively for the CIS, NEDUET students who are ready to **debug** their coding journey and **optimize** their problem-solving skills!
+The QubitCoders community exclusively for the CIS, NEDUET students who are ready to **debug** their coding journey 
+and **optimize** their problem-solving skills!
 
-Our founders host regular contests to **iterate** on your coding skills and **recursively** enhance your ability to tackle the toughest challenges.
+Our founders host regular contests to **iterate** on your coding skills and **recursively** enhance your ability 
+to tackle the toughest challenges.
 
-This app is designed for the QubitCoders community and anyone looking to **level up** their LeetCode game. We analyze your current LeetCode profile and provide insights that help you **refactor** your approach, identify areas to improve, and help you **acquire** the skills needed to conquer any DSA problem with confidence.
+This app is designed for the QubitCoders community and anyone looking to **level up** their LeetCode game. We analyze 
+your current LeetCode profile and provide insights that help you **refactor** your approach, identify areas to improve, 
+and help you **acquire** the skills needed to conquer any DSA problem with confidence.
 """)
 
 st.subheader("Our App Features 🏆")
@@ -47,5 +51,4 @@ footer = """
     </div>
 """
 
-# Adding footer to the bottom of the page
 st.markdown(footer, unsafe_allow_html=True)

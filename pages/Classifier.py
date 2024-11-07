@@ -1,5 +1,5 @@
 import streamlit as st
-from fuzzy.classifier import get_user_expertise
+from fuzzy.classifier import get_user_expertise, load_model
 
 st.set_page_config(
     page_title="AI Profile Classifier",
@@ -7,9 +7,8 @@ st.set_page_config(
 )
 
 st.title("AI Profile Classifier 🧬")
-st.text("This AI profile classifier will help you evaluate your profile strength.\n")
+st.text("""This AI profile classifier will help you evaluate your profile strength.""")
 st.divider()
-
 
 with st.form("my_form"):
     username = st.text_input(
@@ -19,7 +18,7 @@ with st.form("my_form"):
     submitted = st.form_submit_button("Submit")
     if submitted:
         score, expertise = get_user_expertise(username)
-        st.text(f'Your profile score is {float(score)}/10 and expertise is {expertise}!')
+        st.text(f'''Your profile score is {float(score)}/10 and expertise is {expertise}!''')
 
 
 
