@@ -47,7 +47,12 @@ def load_llm_model():
     llm = HuggingFaceEndpoint(
         repo_id="meta-llama/Meta-Llama-3-8B-Instruct",
         token=os.getenv("HUGGINGFACEHUB_API_TOKEN"),
-        temperature=0.7
+        temperature=0.7,
+        max_new_tokens=512,
+        top_k=50,
+        top_p=0.95,
+        typical_p=0.95,
+        repetition_penalty=1.03,
     )
     return llm
 
