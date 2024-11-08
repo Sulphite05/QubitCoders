@@ -7,7 +7,7 @@ st.set_page_config(
 )
 
 st.title("AI Profile Classifier 🧬")
-st.write("""
+st.markdown("""
 This AI profile classifier will help you evaluate your profile strength.
 """)
 st.divider()
