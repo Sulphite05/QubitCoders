@@ -14,7 +14,7 @@ st.divider()
 
 st.subheader("Who We Are 💡")
 st.markdown("""
-The QubitCoders community exclusively for the CIS, NEDUET students who are passionate 
+The QubitCoders community is exclusively for the CIS, NEDUET students who are passionate 
 about **optimising** their problem-solving skills!
 
 Our founders host regular contests to **iterate** on your coding skills so you could enhance your ability 

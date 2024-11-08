@@ -20,7 +20,7 @@ with st.form("my_form"):
     submitted = st.form_submit_button("Submit")
     if submitted:
         expertise_level, expertise_name, recom, contest_data, submission_data = get_response(username)
-        st.text(f'''Your profile score is {float(expertise_level)}/10 and expertise level is {expertise_name}!\n''')
+        st.markdown(f'''Your profile score is **{float(expertise_level)}/10** and expertise level is **{expertise_name}**!\n''')
         st.markdown(f"""
                 <u><strong>Your Data</strong></u><br>
                 ```
