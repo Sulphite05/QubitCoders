@@ -50,3 +50,7 @@ def get_user_expertise(username):
     else: expertise_name = "Advanced"
 
     return expertise_level, expertise_name
+
+def get_user_analysis(expertise, data):
+
+
