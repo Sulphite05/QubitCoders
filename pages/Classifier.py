@@ -1,5 +1,5 @@
 import streamlit as st
-from fuzzy.classifier import get_user_expertise
+from fuzzy.classifier import get_response
 
 st.set_page_config(
     page_title="AI Profile Classifier",
@@ -7,7 +7,7 @@ st.set_page_config(
 )
 
 st.title("AI Profile Classifier 🧬")
-st.text("""
+st.write("""
 This AI profile classifier will help you evaluate your profile strength.
 """)
 st.divider()
@@ -19,5 +19,18 @@ with st.form("my_form"):
     )
     submitted = st.form_submit_button("Submit")
     if submitted:
-        score, expertise = get_user_expertise(username)
-        st.text(f'''Your profile score is {float(score)}/10 and expertise is {expertise}!''')
+        expertise_level, expertise_name, recom, contest_data, submission_data = get_response(username)
+        st.text(f'''Your profile score is {float(expertise_level)}/10 and expertise level is {expertise_name}!\n''')
+        st.markdown(f"""
+                <u><strong>Your Data</strong></u><br>
+                ```
+                • Contest Ranking:   {round(contest_data[0], 2)}
+                • Hard questions:    {submission_data[2]}
+                • Medium questions:  {submission_data[1]}
+                • Easy questions:    {submission_data[0]} 
+                ```
+        """, unsafe_allow_html=True)
+        st.markdown(f"""<u><strong>Recommendation</strong></u><br>""", unsafe_allow_html=True)
+        st.markdown(f"""{recom}""")
+        print(recom)
+
