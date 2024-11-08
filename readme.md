@@ -18,7 +18,7 @@ QubitCoders is a web app designed for **CIS students at NEDUET** and aspiring co
 4. [Technologies Used](#technologies-used)
 5. [Model Integration](#model-integration)
 6. [Deployment](#deployment)
-7. [Contributors](#contributors)
+7. [Contributors](#contributor)
 
 ---
 
@@ -29,7 +29,7 @@ To run the **QubitCoders** app locally, follow these steps:
 ### Prerequisites
 - Python >= 3.7
 - Streamlit
-- HuggingFace Transformers (for LLaMA integration)
+- Gemini
 
 ### Clone the repository
 ```bash
@@ -83,8 +83,8 @@ Enter your LeetCode profile to classify your expertise level:
 ### Expertise Classifier
 The app uses scikit-fuzzy to classify users into four expertise levels based on their contest ratings and the number of problems solved (easy, medium, hard).
 
-### Recommendations via LLaMA 2
-We integrated the LLaMA 2 model via HuggingFace’s Transformers to generate personalized advice based on the user’s LeetCode profile. The input includes:
+### Recommendations via Gemini API
+We integrated the Gemini model to generate personalized advice based on the user’s LeetCode profile. The input includes:
 
 - Expertise level
 - Contest rating

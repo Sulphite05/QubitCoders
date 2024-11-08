@@ -20,17 +20,23 @@ with st.form("my_form"):
     submitted = st.form_submit_button("Submit")
     if submitted:
         expertise_level, expertise_name, recom, contest_data, submission_data = get_response(username)
-        st.markdown(f'''Your profile score is **{float(expertise_level)}/10** and expertise level is **{expertise_name}**!\n''')
-        st.markdown(f"""
-                <u><strong>Your Data</strong></u><br>
-                ```
-                • Contest Ranking:   {round(contest_data[0], 2)}
-                • Hard questions:    {submission_data[2]}
-                • Medium questions:  {submission_data[1]}
-                • Easy questions:    {submission_data[0]} 
-                ```
-        """, unsafe_allow_html=True)
-        st.markdown(f"""<u><strong>Recommendation</strong></u><br>""", unsafe_allow_html=True)
-        st.markdown(f"""{recom}""")
-        print(recom)
+        if submission_data:
+            st.markdown(f'''Your profile score is **{float(expertise_level)}/10** and expertise level is **{expertise_name}**!\n''')
+            st.markdown(f"""
+                    <u><strong>Your Data</strong></u><br>
+                    ```
+                    • Contest Ranking:   {round(contest_data[0], 2)}
+                    • Hard questions:    {submission_data[2]}
+                    • Medium questions:  {submission_data[1]}
+                    • Easy questions:    {submission_data[0]} 
+                    ```
+            """, unsafe_allow_html=True)
+
+            st.markdown(f"""<u><strong>Recommendation</strong></u><br>""", unsafe_allow_html=True)
+            st.markdown(f"""{recom}""")
+
+        else:
+            st.markdown(
+                f'''User does not exist!\n''')
+
 
