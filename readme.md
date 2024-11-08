@@ -7,7 +7,7 @@ QubitCoders is a web app designed for **CIS students at NEDUET** and aspiring co
 ### Features
 - **Ranking**: View the rankings of CIS students in the community.
 - **Classifier**: Get your LeetCode profile classified based on your skills (Beginner, Intermediate, Advanced).
-- **Recommendations**: Get personalized advice based on your LeetCode profile, including solved problems in Easy, Medium, and Hard categories.
+- **Recommendations**: Get personalized advice based on your LeetCode profile, including solved problems in Easy, Medium, and Hard categories as well as your contest rating.
 
 ---
 
@@ -52,8 +52,7 @@ streamlit run app.py
 2. Navigate through the app:
 - On the Welcome Page, learn more about the QubitCoders community and its purpose.
 - Ranking: View the leaderboard for CIS students in the department.
-- Classifier: Enter your LeetCode username to classify your expertise level.
-- Recommendations: Based on your LeetCode profile, get personalized advice for improvement.
+- Classifier: Enter your LeetCode username to classify your expertise level and receive recommendations.
 
 ---
 ## App Features
@@ -64,9 +63,10 @@ View the leaderboard to see how you rank compared to other CIS students at NEDUE
 ### Classifier
 Enter your LeetCode profile to classify your expertise level:
 - Beginner
-- Intermediate
+- Beginner-intermediate
+- Intermediate-advanced
 - Advanced
-- Recommendations
+
 ---
 ## Technologies Used
 
@@ -74,7 +74,6 @@ Enter your LeetCode profile to classify your expertise level:
 - Python: Programming language.
 - HuggingFace: Used for integrating LLaMA-2 for personalized coding advice. 
 - pandas: For handling data processing and displaying dataframes.
-- NumPy: For numerical calculations.
 - scikit-fuzzy: Used for expertise classification based on fuzzy logic.
 - GitHub: For version control and project management.
 
@@ -90,10 +89,10 @@ We integrated the LLaMA 2 model via HuggingFace’s Transformers to generate per
 - Expertise level
 - Contest rating
 - Number of solved easy, medium, and hard problems
----
+
 
 ## Deployment
-The QubitCoders app is deployed on Streamlit Cloud. To view the live version, click here.
+The QubitCoders app is deployed on Streamlit Cloud. To view the live version, visit [https://qubitcoders.streamlit.app/](https://qubitcoders.streamlit.app/).
 
 ---
 ## Contributor

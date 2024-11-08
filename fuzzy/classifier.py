@@ -51,6 +51,6 @@ def get_user_expertise(username):
 
     return expertise_level, expertise_name
 
-def get_user_analysis(expertise, data):
+# def get_user_analysis(expertise, data):
 
 
