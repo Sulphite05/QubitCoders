@@ -15,20 +15,19 @@ prompt_template = PromptTemplate(
     Hard questions solved: {hards}
     Medium questions solved: {mediums}
     Easy questions solved: {easies}
-    
     The user's expertise level is: {expertise_name}.
-
-    Based on this information, give them a fun, personalized recommendation to help them improve in competitive 
+    Based on this information, give the user a fun, personalized recommendation to help them improve in competitive 
     programming.
-    Keep it under 150 words and focus on areas they should work on, such as:
+    Focus on areas they should work on, such as:
     - Which type of problems (Medium, Hard) they should solve more. Stress more on hards.
     - What kind of problems they should solve more based on their expertise level(basic DS like arrays, hashmaps, 
     hashsets or advanced ones like linked lists, trees, graphs etc and also algorithms)
     - Whether they should participate in more contests.
     - Any specific advice to boost their problem-solving skills.
     - Any routine habit like sleeping, practice, exercise to enhance their competitive programming skills.
-    Your recommendation should be fun, engaging, motivational, and actionable. Directly give the advice without telling 
-    that you are about to give a recommendation. Don't write in inverted commas. Don't ask for feedback.
+    Keep the recommendation under 200 words.
+    Your recommendation should be fun, engaging, motivational, and actionable. 
+    Begin with Assalam u alaikum! then Just write the advise and stop.
     """
 )
 
@@ -41,20 +40,6 @@ def load_fuzz_model():
         loaded_system = pickle.load(f)
     return loaded_system
 
-@cache_resource
-def load_llm_model():
-    os.environ["HUGGINGFACEHUB_API_TOKEN"] = secrets["huggingface"]["api_key"]
-    llm = HuggingFaceEndpoint(
-        repo_id="meta-llama/Meta-Llama-3-8B-Instruct",
-        token=os.getenv("HUGGINGFACEHUB_API_TOKEN"),
-        temperature=0.7,
-        max_new_tokens=512,
-        top_k=50,
-        top_p=0.95,
-        typical_p=0.95,
-        repetition_penalty=1.03,
-    )
-    return llm
 
 def fetch_api_data(username):
     try:
@@ -87,14 +72,20 @@ def get_user_expertise(contest_data, submission_data):
 
     if 0 <= expertise_level < 3.5: expertise_name = "beginner"
     elif 3.5 < expertise_level < 6.2: expertise_name = "beginner-intermediate"
-    elif 6.2 <= expertise_level < 8.2: expertise_name = "bntermediate-advanced"
-    else: expertise_name = "Advanced"
+    elif 6.2 <= expertise_level < 8.2: expertise_name = "intermediate-advanced"
+    else: expertise_name = "advanced"
 
     return expertise_level, expertise_name
 
 
 def get_user_analysis(expertise_name, contest_data, submission_data):
-    llm = load_llm_model()
+    os.environ["HUGGINGFACEHUB_API_TOKEN"] = secrets["huggingface"]["api_key"]
+    llm = HuggingFaceEndpoint(
+        repo_id="meta-llama/Meta-Llama-3-8B-Instruct",
+        token=os.getenv("HUGGINGFACEHUB_API_TOKEN"),
+        temperature=0.7,
+        max_new_tokens=300,
+    )
     chain = prompt_template | llm
     user_analysis = chain.invoke({
         'expertise_name': expertise_name,
