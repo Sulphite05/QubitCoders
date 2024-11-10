@@ -79,27 +79,25 @@ def get_user_analysis(expertise_name, contest_data, submission_data):
     easies, mediums, hards = submission_data
 
     response = model.generate_content([
-        f'''You are an expert competitive programmer and problem solver who needs to give advice to a user.
+        f'''You need to give advice to a user.
         The user is a competitive programmer providing you with their data as follows:
-        \nContest Ranking: {contest_rating} 
         \nHard questions solved: {hards}
         \nMedium questions solved: {mediums}
         \nEasy questions solved: {easies}
         \nThe user's expertise level is: {expertise_name}
         \nBased on this information, give the user a personalized recommendation to help them improve in 
-        competitive programming.
+        competitive programming pointing towards their current status.
         \nFocus on areas they should work on, such as
-        \n- Which type of problems (Medium, Hard) they should solve more. Stress more on hards.
-        \n- What kind of problems they should solve more based on their expertise level
-        (basic DS like arrays, hashmaps, hashsets or advanced ones like linked lists, trees, graphs etc and 
-        also algorithms)
-        \n- Whether they should participate in more contests.
-        \n- Any specific advice to boost their problem-solving skills.
+        \n- Which type of problems (Medium, Hard) they should solve more. If they are beginners, focus on mediums else hards
+        \n- What kind of data structures and algorithms they should practice more based on their expertise.
+        Contest rating above 2000 is considered advanced.
+        The contest rating of the user is {contest_rating}. 
+        \n- Based on this, advise whether they should participate more in contests.
+        
+        \n- Then give any specific advice to boost their problem-solving skills.
         \n- Any routine habit like sleeping, practice, exercise to enhance their competitive programming skills.
-        \nKeep the recommendation as with 250 words. 
+        \nKeep the recommendation within 250 words. 
         Your recommendation should be fun, engaging, motivational, and actionable. Begin with Assalam u alaikum!''',
-        "1400 - Hard questions solved: 10 - Medium questions solved: 200- Easy questions solved: 100",
-        "output: ",
     ])
     return response.text
 
