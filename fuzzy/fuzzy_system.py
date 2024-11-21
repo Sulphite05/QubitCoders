@@ -14,23 +14,23 @@ expertise = ctrl.Consequent(np.arange(0, 10, 0.2), 'expertise')
 
 # membership functions
 contest_rating['low'] = fuzz.trapmf(contest_rating.universe, [0, 0, 1200, 1500])
-contest_rating['medium'] = fuzz.trimf(contest_rating.universe, [1300, 1550, 1800])
+contest_rating['medium'] = fuzz.trapmf(contest_rating.universe, [1300, 1550, 1600, 1800])
 contest_rating['high'] = fuzz.trapmf(contest_rating.universe, [1650, 1900, 4000, 4000])
 
 easies['few'] = fuzz.trapmf(easies.universe, [0, 0, 50, 100])
-easies['moderate'] = fuzz.trimf(easies.universe, [80, 150, 300])
+easies['moderate'] = fuzz.trapmf(easies.universe, [80, 150, 200, 300])
 easies['many'] = fuzz.trapmf(easies.universe, [120, 250, 1000, 1000])
 
 mediums['few'] = fuzz.trapmf(mediums.universe, [0, 0, 50, 110])
-mediums['moderate'] = fuzz.trimf(mediums.universe, [90, 200, 350])
+mediums['moderate'] = fuzz.trapmf(mediums.universe, [90, 200, 275, 350])
 mediums['many'] = fuzz.trapmf(mediums.universe, [220, 400, 2000, 2000])
 
 hards['few'] = fuzz.trapmf(hards.universe, [0, 0, 15, 40])
-hards['moderate'] = fuzz.trimf(hards.universe, [30, 60, 100])
+hards['moderate'] = fuzz.trapmf(hards.universe, [30, 60, 80, 100])
 hards['many'] = fuzz.trapmf(hards.universe, [70, 100, 1000, 1000])
 
 expertise['beginner'] = fuzz.trapmf(expertise.universe, [0, 0, 2.5, 5])
-expertise['beginner-intermediate'] = fuzz.trimf(expertise.universe, [3.2, 4.5, 6.5])
+expertise['beginner-intermediate'] = fuzz.trapmf(expertise.universe, [3.2, 4.5, 5.5, 6.5])
 expertise['intermediate-advanced'] = fuzz.trapmf(expertise.universe, [6.2, 7, 8.5, 9])
 expertise['advanced'] = fuzz.trapmf(expertise.universe, [8.4, 8.6, 10, 10])
 

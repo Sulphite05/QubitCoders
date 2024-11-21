@@ -36,16 +36,17 @@ def load_llm_model():
 
 def fetch_api_data(username):
     try:
-        r = requests.get(f'https://leetcodeapi-v1.vercel.app/{username}')
-        data = r.json()[username]['submitStatsGlobal']['acSubmissionNum']
+        r = requests.get(f'https://alfa-leetcode-api.onrender.com/{username}/solved')
+        print(r.json())
 
-        submission_data = (data[1]['count'], data[2]['count'], data[3]['count'])
+        data = r.json()
+        submission_data = (data['easySolved'], data['mediumSolved'], data['hardSolved'])
     except KeyError:
         submission_data = None
 
     try:
-        r = requests.get(f'https://leetcodeapi-v1.vercel.app/rating/{username}')
-        contest_data = (r.json()['rating'],)
+        r = requests.get(f'https://alfa-leetcode-api.onrender.com/{username}/contest')
+        contest_data = (r.json()['contestRating'],)
     except KeyError:
         contest_data = (0,)
 
